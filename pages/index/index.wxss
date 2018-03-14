@@ -39,3 +39,16 @@
   border: 1px solid #ddd;
   border-radius: 2px;
 }
+.exhibition-chunk{
+  width: 100%;
+  margin-top:50px;
+  display: block;
+  border: 1px solid #ddd;
+  border-radius: 3;
+}
+.exhibition-item{
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
