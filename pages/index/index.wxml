@@ -17,13 +17,18 @@
     <view>
       <text style='width:100%;left:5px;position:absolute;'>案例展示</text>
     </view>
-    <scroll-view scroll-x class='scroll-view_H'  style='margin-top:20px;margin-left:10px;'>
+    <scroll-view scroll-x class='scroll-view_H'  style='margin-top:20px;margin-left:10px;width:100%'>
+       <view id="1" class='scroll-view-item_H'>
       <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
+      </view>
+      <view id="2" class='scroll-view-item_H'>
       <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
+      </view>
+      <view id="3" class='scroll-view-item_H'>
       <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
-      <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
-      <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
-      <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
+      </view> 
+    
+      
     </scroll-view>
       
     </view>
