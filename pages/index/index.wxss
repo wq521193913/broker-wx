@@ -1,4 +1,4 @@
-/**index.wxss**/
+/* pages/home/home.wxss */
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -11,15 +11,31 @@
   margin: 20rpx;
   border-radius: 50%;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.btn-chunk{
+  text-align: center;
 }
-
-.usermotto {
-  margin-top: 200px;
+.btn{
+  width: 250rpx;
+  height: 60rpx;
+  font-size: 18px;
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: normal;
 }
-.but {
-  width: 150px;
-  border-radius: 55px
+.reg-btn{
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+.ci-btn{
+  left: 120rpx;
+  position: absolute;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+.inv-btn{
+  left: 400rpx;
+  position: absolute;
+  border: 1px solid #ddd;
+  border-radius: 2px;
 }

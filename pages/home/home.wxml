@@ -1,8 +1,2 @@
-<!--pages/home/home.wxml
-<text>pages/home/home.wxml</text>-->
-<view class='container'>
-  <image src='{{userInfo.avatarUrl}}' class="userinfo-avatar" background-size="cover"></image>
-  <button>注册</button>
-  <button>登记客户</button>
-  <button>邀请好友</button>
-</view>
+<!--pages/home/home.wxml-->
+<text>pages/home/home.wxml</text>

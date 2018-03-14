@@ -1,16 +1,17 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-
-      <!--<text>赚外快,就是这么简单</text> -->
-      <button class="but" bindtap='toHomeTab'>去瞅瞅</button>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+<!--pages/home/home.wxml
+<text>pages/home/home.wxml</text>-->
+<view class='container'>
+  <image src='/image/20180314164849.png' class="userinfo-avatar" background-size="cover"></image>
+  <view class='btn-chunk'>
+    <block wx:if="{{isRegister}}">
+      <view class='btn reg-btn'>注册</view>
     </block>
+    <block wx:else>
+      <view class='btn ci-btn'>登记客户</view>
+      <view class='btn inv-btn'>邀请好友</view>
+    </block>
+    
+    
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+  
 </view>
