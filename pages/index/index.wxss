@@ -53,5 +53,16 @@
   border-radius: 50%;
 }
 .scroll-view-item_H{
-  width: 20%;
+  display: inline;
+}
+.scroll-view_H{
+  margin-top:20px;
+  margin-left:10px;
+  width:100%;
+  white-space:nowrap;
+}
+.designer-chunk{
+  margin-top: 10rpx;
+  width: 100%;
+  border: 1px solid #ddd;
 }

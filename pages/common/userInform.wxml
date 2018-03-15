@@ -1,0 +1,52 @@
+<template name="userInform">
+
+  <view class="header_inform">
+    <block wx:if="{{navigator}}">
+      <navigator url='/pages/index/index' open-type="{{navigator}}">
+        <view class='header_inform_left'>
+          <image src='{{userInfo.avatarUrl}}'></image>
+          <text>{{userInfo.nickName}}</text>
+        </view>
+      </navigator>
+    </block>
+    <block wx:else>
+      <view class='header_inform_left'>
+          <image src='{{userInfo.avatarUrl}}'></image>
+          <text>{{userInfo.nickName}}</text>
+        </view>
+    </block>
+   
+    <view class="header_inform_right" wx:if="{{showRight}}">
+      <text>桌位:{{tables.title}}</text>
+      <block wx:if="{{ordersStatus==0 || ordersStatus==1 }}">
+        <block wx:if="{{tables_list.length>0}}">
+          <picker bindchange="changeTable" value="{{tableIndex}}" range="{{tables_list}}" range-key="title">
+
+            <view class='change_tables'>
+              <image src='/image/eidtor_icon.png'></image>
+              <text>修改桌位</text>
+            </view>
+            
+          </picker>
+        </block>
+      </block>
+
+      <!--查看订单 -->
+      <block wx:if="{{oid}}">
+
+          <view class='change_tables right'>
+
+            <navigator url='/pages/orderMsg/orderMsg?oid={{oid}}&see=1'>
+              <text class='border_shock'>查看已点菜品</text>
+            </navigator>
+
+          </view>
+
+      </block>
+
+    </view>
+
+  </view>
+
+</template>
+

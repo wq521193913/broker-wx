@@ -10,27 +10,47 @@
       <view class='btn ci-btn'>登记客户</view>
       <view class='btn inv-btn'>邀请好友</view>
     </block>
-    
-    
   </view>
+
   <view class='exhibition-chunk'>
     <view>
       <text style='width:100%;left:5px;position:absolute;'>案例展示</text>
     </view>
-    <scroll-view scroll-x class='scroll-view_H'  style='margin-top:20px;margin-left:10px;width:100%'>
-       <view id="1" class='scroll-view-item_H'>
+    <scroll-view scroll-x class='scroll-view_H'  style='margin-top:20px;margin-left:10px;width:100%;white-space:nowrap;'>
+       <view id="a1" class='scroll-view-item_H'>
       <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
       </view>
-      <view id="2" class='scroll-view-item_H'>
+      <view id="a2" class='scroll-view-item_H'>
       <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
       </view>
-      <view id="3" class='scroll-view-item_H'>
+      <view id="a3" class='scroll-view-item_H'>
       <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
       </view> 
-    
-      
+    <view id="a4" class='scroll-view-item_H'>
+      <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
+      </view> 
+      <view id="a5" class='scroll-view-item_H'>
+      <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
+      </view> 
+      <view id="a6" class='scroll-view-item_H'>
+      <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
+      </view> 
     </scroll-view>
+    </view>
+
+    <view class='designer-chunk'>
+      <view style='left:5px;position:absolute;'><text>设计师</text></view>
+
+      <scroll-view scroll-x="true" style='margin-top:20px;margin-left:10px;white-space:nowrap;width:100%'>
+
+      <view style='text-align:left;display:inline;'>
       
+         <image src='/image/person.jpg' class='exhibition-item' background-size="cover"></image>
+         <text style='font-size:10px;top:60px;left:0px;text-align:left;position:absolute;'>风格:现代/欧式</text>
+      </view> 
+
+      </scroll-view>
+    
     </view>
   
 </view>
