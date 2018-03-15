@@ -1,6 +1,6 @@
 //app.js
 App({
-  serverUrl: 'http://localhost:8981',
+  serverUrl: 'http://127.0.0.1:8762',
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
@@ -14,12 +14,20 @@ App({
         this.globalData.code=res.code;
         console.log(res);
         console.log(this.globalData.userInfo);
-        // wx.request({
-        //   url: this.serverUrl + "/wxLogin",
-        //   data:{
-        //     code:res.code
-        //   }
-        // })
+        wx.request({
+          url: this.serverUrl + "/static/wxLogin",
+          method:'POST',
+          data:{
+            code:res.code
+          },
+          dataType:'json',
+          success: function(res){
+            
+          },
+          fail: function(res){
+            console.log(res);
+          }
+        })
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
