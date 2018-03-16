@@ -1,6 +1,14 @@
 //app.js
 App({
   serverUrl: 'http://127.0.0.1:8762',
+  wxLogin: function (cb) {
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        this.globalData.code = res.code;
+      }
+    });
+  },
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
@@ -8,30 +16,13 @@ App({
     wx.setStorageSync('logs', logs)
 
     // 登录
-    wx.login({
-      success: res => {
-        wx.request({
-          url: this.serverUrl + "/static/wxLogin",
-          method:'POST',
-          data:{
-            code:res.code
-          },
-          dataType:'json',
-          success: function(res){
-            
-          },
-          fail: function(res){
-            console.log(res);
-          }
-        })
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
+    this.wxLogin();
     // 获取用户信息
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userLocation']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
@@ -42,15 +33,21 @@ App({
               if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(res)
               }
+              
             }
-          })
+          });
+
+          
         }
       }
     })
   },
+  
+
   globalData: {
     userInfo: null,
-    code: null
+    code: null,
+    session_3rd:null
   },
   
 })

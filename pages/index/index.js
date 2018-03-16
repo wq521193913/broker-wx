@@ -16,25 +16,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.login({
-    //   success:function(res){
-    //     console.log(res);
-    //     if(res.errMsg.indexOf(":ok") > 0){
-    //       wx.request({
-    //         url: '',
-    //       })
-    //     }
-
-    //   },
-    //   fail:function(res){
-    //     wx.showToast({
-    //       title: '登录失败',
-    //       icon:"none",
-    //       duration:2000
-    //     })
-    //   }
-    // })
-    
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -51,19 +32,53 @@ Page({
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
+      
       wx.getUserInfo({
         success: res => {
-          console.log(res);
           app.globalData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true
           })
+          if(!app.globalData.session_3rd){
+            if (!app.globalData.code) {
+              wx.login({
+                success: res => {
+                  // 发送 res.code 到后台换取 openId, sessionKey, unionId
+                  app.globalData.code = res.code;
+                  this.appLogin();
+                }
+              });
+            } else {
+              this.appLogin();
+            }
+          }
         }
       })
     }
   },
-
+  appLogin:function(){
+    wx.request({
+      url: app.serverUrl + "/static/wxLogin",
+      method: 'POST',
+      data: {
+        code: app.globalData.code,
+        wxNickName: app.globalData.userInfo.nickName,
+        wxCity: app.globalData.userInfo.city,
+        wxProvince: app.globalData.userInfo.province,
+        wxCountry: app.globalData.userInfo.country,
+        wxAvatarUrl: app.globalData.userInfo.nickName,
+        encryptedData: res.encryptedData
+      },
+      dataType: 'json',
+      success: function (res) {
+        app.globalData.session_3rd = res.data;
+      },
+      fail: function (res) {
+        console.log(res);
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
