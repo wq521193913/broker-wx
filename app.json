@@ -4,12 +4,13 @@
     "pages/common/common",
     "pages/home/home",
     "pages/user/user",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/checkin/checkin"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarBackgroundColor": "#fec53a",
+    "navigationBarTitleText": "棋布",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

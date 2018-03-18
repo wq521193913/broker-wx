@@ -1,0 +1,47 @@
+<view class="">
+  <view style='width:100%;'>
+    <label style='display:inline-block;left:0px;position:relative;width:25%'>客户电话:</label>
+    <input type='text' confirm-type='next' style='top:5px;border:1px solid #fff;display:inline-block;width:60%;background:red;position:relative'></input>
+  </view>
+
+  <view style='width:100%;'>
+    <label style='display:inline-block;left:0px;position:relative;width:25%'>客户姓名:</label>
+    <input type='text' confirm-type='next' style='top:5px;border:1px solid #fff;display:inline-block;width:60%;background:red;position:relative'></input>
+  </view>
+
+  <view style='width:100%;'>
+    <label style='display:inline-block;left:0px;position:relative;width:25%'>住址:</label>
+     <picker mode="region" value="{{region}}" bindchange='bindRegionChange' style='display:inline-block;'>
+    <view class="picker">
+      {{region[0]}}，{{region[1]}}，{{region[2]}}
+    </view>
+  </picker>
+     <input type='text' confirm-type='next' style='left:25%;top:5px;border:1px solid #fff;width:60%;background:red;position:relative' placeholder='详细地址'></input> 
+  </view>
+
+  <view style='width:100%;'>
+    <label style='display:inline-block;left:0px;position:relative;width:25%'>标签:</label>
+   
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" style='display:inline-block;'>
+        <view class="picker">
+          {{array[index]}}
+        </view>
+      </picker>
+  </view>
+
+  <view style='width:100%;'>
+    <view style='display:inline-block;width:25%;'>
+      <label style='display:inline-block;left:0px;top:0px;position:relative;top:-30px;'>备注:</label>
+    </view>
+    <view style='display:inline-block;width:60%;'>
+    <textarea type='text' confirm-type='next' style='top:5px;border:1px solid #fff;display:inline-block;background:red;position:relative;height:50px;'></textarea>
+    </view>
+  </view>
+
+  <view >
+    <button>保存</button>
+    <button>取消</button>
+  </view>
+
+  
+</view>

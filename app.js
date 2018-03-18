@@ -1,5 +1,6 @@
 //app.js
 App({
+
   serverUrl: 'http://127.0.0.1:8762',
   wxLogin: function (cb) {
     wx.login({
@@ -10,14 +11,51 @@ App({
     });
   },
   wxUserInfo: function(cb){
-    wx.getUserInfo({
-      success: res => {
-        this.globalData.userInfo = res.userInfo;
-        this.globalData.encryptedData = res.encryptedData;
-      }
-    })
+    this.globalData.userInfo = wx.getStorageSync("userInfo");
+    if (!this.globalData.userInfo){
+      console.log(this.globalData.userInfo)
+      wx.getUserInfo({
+        success: res => {
+          wx.setStorageSync("userInfo", res.userInfo)
+          this.globalData.userInfo = res.userInfo;
+          this.globalData.encryptedData = res.encryptedData;
+        }
+      });
+    }
+    
   },
-  userLogin: function(cb){
+  userLogin: function (cb) {
+    const _this = this;
+    if (this.globalData.code && this.globalData.userInfo) {
+      wx.request({
+        url: this.serverUrl + "/static/wxLogin",
+        method: 'POST',
+        data: {
+          code: _this.globalData.code,
+          wxNickName: _this.globalData.userInfo.nickName,
+          wxCity: _this.globalData.userInfo.city,
+          wxProvince: _this.globalData.userInfo.province,
+          wxCountry: _this.globalData.userInfo.country,
+          wxAvatarUrl: _this.globalData.userInfo.avatarUrl,
+          encryptedData: _this.globalData.encryptedData
+        },
+        dataType: 'json',
+        success: function (res) {
+          wx.setStorageSync("session_3rd", res.data.data);
+          _this.globalData.session_3rd = res.data.data;
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+
+      });
+      if (null != this.globalData.intervalId) {
+        clearInterval(this.globalData.intervalId)
+      }
+    }
+
+  },
+  checkLoginInfo: function(cb){
     
     if (!this.globalData.code) {
       this.wxLogin();
@@ -27,31 +65,13 @@ App({
     }
 
     if (!this.globalData.code || !this.globalData.userInfo){
-      setInterval("wxGetUserInfo()", 50);
+      this.globalIntervalId = setInterval(this.userLogin(), 50);
       return;
+    }else{
+      this.userLogin();
     }
-    wx.request({
-      url: this.serverUrl + "/static/wxLogin",
-      method: 'POST',
-      data: {
-        code: this.globalData.code,
-        wxNickName: this.globalData.userInfo.nickName,
-        wxCity: this.globalData.userInfo.city,
-        wxProvince: this.globalData.userInfo.province,
-        wxCountry: this.globalData.userInfo.country,
-        wxAvatarUrl: this.globalData.userInfo.nickName,
-        encryptedData: encryptedData
-      },
-      dataType: 'json',
-      success: function (res) {
-        app.globalData.session_3rd = res.data;
-      },
-      fail: function (res) {
-        console.log(res);
-      }
-    })
+    
   },
-  
   onLaunch: function () {
     // 展示本地存储能力
 
@@ -67,7 +87,9 @@ App({
     userInfo: null,
     code: null,
     session_3rd:null,
-    encryptedData:null
+    encryptedData:null,
+    intervalId:null
+
   },
   
 })

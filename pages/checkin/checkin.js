@@ -1,36 +1,34 @@
-// pages/home/home.js
-
-const app = getApp()
-
+// pages/checkin-customer/checkin.js
 Page({
-
+  
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {},
-    isRegister:false,
+    region: ['广东省', '广州市', '海珠区'],
+    array: ['美国', '中国', '巴西', '日本'],
+    index: 0,
   },
-  checkIdCustomer: function(){
-    wx.navigateTo({
-      url:"/pages/checkin/checkin"
-    });
+  bindPickerChange: function (e) {
+    this.setData({
+      index: e.detail.value
+    })
+  },
+  //省市区选择器
+  bindRegionChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      region: e.detail.value
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.navigateTo({
-      url: '/pages/checkin/checkin',
-    })
-    // app.globalData.session_3rd = wx.getStorageSync("session_3rd");
-    // if (!app.globalData.session_3rd){
-      
-    //   app.checkLoginInfo();
-    // }
-  },
   
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

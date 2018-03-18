@@ -7,7 +7,7 @@
       <view class='btn reg-btn'>注册</view>
     </block>
     <block wx:else>
-      <view class='btn ci-btn'>登记客户</view>
+      <view class='btn ci-btn' bindtap='checkIdCustomer'>登记客户</view>
       <view class='btn inv-btn'>邀请好友</view>
     </block>
   </view>
