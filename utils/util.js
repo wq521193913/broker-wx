@@ -17,3 +17,7 @@ const formatNumber = n => {
 module.exports = {
   formatTime: formatTime
 }
+
+const checkPhone = phone => {
+  let reg = /^1['3'|'5'|'7'|'8']
+}

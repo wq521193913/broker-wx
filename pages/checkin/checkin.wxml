@@ -34,7 +34,7 @@
       <label class='checkin-label' style='top:-30px;width:100%'><span class='letter-spacing'>备</span>注:</label>
     </view>
     <view style='display:inline-block;width:60%;'>
-      <textarea name='remarks' confirm-type='done' class='checkin-textarea' ></textarea>
+      <textarea name='remarks' confirm-type='done' class='checkin-textarea' style='width:100%;'></textarea>
     </view>
   </view>
 

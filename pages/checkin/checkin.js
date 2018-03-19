@@ -31,6 +31,14 @@ Page({
       dataType:'json',
       success: function(res){
         console.log(res);
+        if(res.data.success){
+
+        }else{
+          wx.showToast({
+            title: res.data.msg || '操作失败',
+            icon: 'none',
+          })
+        }
       },
       fail: function(res){
         console.log(res);
