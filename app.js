@@ -65,7 +65,7 @@ App({
     }
 
     if (!this.globalData.code || !this.globalData.userInfo){
-      this.globalIntervalId = setInterval(this.userLogin(), 50);
+      this.globalIntervalId = setInterval(this.userLogin(), 5);
       return;
     }else{
       this.userLogin();

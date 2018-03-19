@@ -5,10 +5,48 @@ Page({
    * 页面的初始数据
    */
   data: {
-    region: ['广东省', '广州市', '海珠区'],
-    array: ['美国', '中国', '巴西', '日本'],
+    region: ['浙江省', '杭州市', '萧山区'],
+    array: ['咨询', '马上会装修', '已装修', '不装修了'],
     index: 0,
+    customer:{},
   },
+  //保存
+  checkinSubmit: function(e){
+    console.log(e.detail.value);
+  },
+  //取消
+  checkinCancel: function(){
+    wx.navigateBack();
+  },
+  userLocation: function(cb){
+    var _this = this;
+    wx.getLocation({
+      success: function(res) {
+        let location = res.latitude + "," + res.longitude;
+        wx.request({
+          url: 'http://apis.map.qq.com/ws/geocoder/v1/?location=' + location +'&coord_type=1',
+          data:{
+            'key':'HSTBZ-MWD3J-UGEFB-KRK3J-JPTMQ-GABGZ'
+          },
+          success: res =>{
+            console.log(res);
+            const address_component = res.data.result.address_component;
+            _this.setData({
+              region: [address_component.province, address_component.city, address_component.district]
+            });
+          },
+          fail: function(){
+            _this.setData({
+              region: ['浙江省', '杭州市', '萧山区'],
+            });
+            
+          }
+          
+        })
+      },
+    });
+  },
+  //装修意向
   bindPickerChange: function (e) {
     this.setData({
       index: e.detail.value
@@ -26,7 +64,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.userLocation();
   },
 
   /**
