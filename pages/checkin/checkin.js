@@ -15,26 +15,27 @@ Page({
   //保存
   checkinSubmit: function(e){
     console.log(e.detail.value);
-    // wx.request({
-    //   url: app.serverUrl+'/customer/insertCustomer',
-    //   data:{
-    //     customerPhone:e.detail.value.customerPhone,
-    //     customerName:e.detail.value.customerName,
-    //     address:e.detail.value.address,
-    //     status: e.detail.value.status,
-    //     remarks: e.detail.values.remarks,
-    //     province: e.detail.value.location[0],
-    //     city: e.detail.value.location[1],
-    //     district: e.detail.value.location[2],
-    //   },
-    //   dataType:'json',
-    //   success: function(res){
-    //     console.log(res);
-    //   },
-    //   fail: function(res){
-    //     console.log(res);
-    //   }
-    // })
+    wx.request({
+      url: app.serverUrl+'/customer/insertCustomer',
+      method: 'POST',
+      data:{
+        customerPhone: e.detail.value.customerPhone,
+        customerName: e.detail.value.customerName,
+        address:e.detail.value.address,
+        status: e.detail.value.status,
+        remarks: e.detail.value.remarks,
+        province: e.detail.value.location[0],
+        city: e.detail.value.location[1],
+        district: e.detail.value.location[2],
+      },
+      dataType:'json',
+      success: function(res){
+        console.log(res);
+      },
+      fail: function(res){
+        console.log(res);
+      }
+    })
   },
   //取消
   checkinCancel: function(){
