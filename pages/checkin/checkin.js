@@ -1,4 +1,5 @@
 // pages/checkin-customer/checkin.js
+var util = require("../../utils/util.js")
 const app = getApp()
 Page({
   
@@ -15,6 +16,14 @@ Page({
   //保存
   checkinSubmit: function(e){
     console.log(e.detail.value);
+    const phone = e.detail.value.customerPhone;
+    if(!phone || !util.checkPhone(phone)){
+      wx.showToast({
+        title: '请填入正确的手机号',
+        icon: 'none',
+      })
+        return
+    }
     wx.request({
       url: app.serverUrl+'/customer/insertCustomer',
       method: 'POST',

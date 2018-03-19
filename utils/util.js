@@ -13,11 +13,17 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
+const checkPhone = phone => {
+  let reg = /^1[34578]\d{9}/;
+  if (reg.test(phone)) {
+    return true;
+  }
+  return false;
+}
 
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  checkPhone: checkPhone
 }
 
-const checkPhone = phone => {
-  let reg = /^1['3'|'5'|'7'|'8']
-}
+
