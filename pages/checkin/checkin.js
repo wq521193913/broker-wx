@@ -1,4 +1,5 @@
 // pages/checkin-customer/checkin.js
+const app = getApp()
 Page({
   
   /**
@@ -6,13 +7,34 @@ Page({
    */
   data: {
     region: ['浙江省', '杭州市', '萧山区'],
-    array: ['咨询', '马上会装修', '已装修', '不装修了'],
+    // array: ['咨询', '马上会装修', '已装修', '不装修了'],
+    array: [{id:0,name:'咨询'}, {id:1,name:'马上会装修'}, {id:2,name:'已装修'}, {id:3,name:'不装修了'}],
     index: 0,
     customer:{},
   },
   //保存
   checkinSubmit: function(e){
     console.log(e.detail.value);
+    // wx.request({
+    //   url: app.serverUrl+'/customer/insertCustomer',
+    //   data:{
+    //     customerPhone:e.detail.value.customerPhone,
+    //     customerName:e.detail.value.customerName,
+    //     address:e.detail.value.address,
+    //     status: e.detail.value.status,
+    //     remarks: e.detail.values.remarks,
+    //     province: e.detail.value.location[0],
+    //     city: e.detail.value.location[1],
+    //     district: e.detail.value.location[2],
+    //   },
+    //   dataType:'json',
+    //   success: function(res){
+    //     console.log(res);
+    //   },
+    //   fail: function(res){
+    //     console.log(res);
+    //   }
+    // })
   },
   //取消
   checkinCancel: function(){

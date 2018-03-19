@@ -22,10 +22,9 @@
 
   <view class='checkin-item'>
     <label class='checkin-label'><span class='letter-spacing'>标</span>签:</label>
-   
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" style='display:inline-block;'>
+      <picker name='status' mode='selector' bindchange="bindPickerChange" range="{{array}}" range-key='name' style='display:inline-block;'>
         <view class="picker">
-          <text name='status'>{{array[index]}}</text> 
+          <text>{{array[index].name}}</text> 
         </view>
       </picker>
   </view>
@@ -35,7 +34,7 @@
       <label class='checkin-label' style='top:-30px;width:100%'><span class='letter-spacing'>备</span>注:</label>
     </view>
     <view style='display:inline-block;width:60%;'>
-    <textarea type='text' name='remarks' confirm-type='done' class='checkin-textarea' ></textarea>
+      <textarea name='remarks' confirm-type='done' class='checkin-textarea' ></textarea>
     </view>
   </view>
 
