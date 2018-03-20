@@ -16,20 +16,11 @@ App({
             this.globalData.userInfo = res.userInfo;
             this.globalData.encryptedData = res.encryptedData;
             this.globalData.iv = res.iv;
-            console.log(res);
           }
         });
       }
     });
   },
-  // wxUserInfo: function(cb){
-  //   this.globalData.userInfo = wx.getStorageSync("userInfo");
-  //   if (!this.globalData.userInfo){
-      
-  //   }
-  //   console.log(this.globalData.userInfo);
-    
-  // },
   userLogin: function (cb) {
     const _this = this;
     if (this.globalData.code && this.globalData.userInfo) {
@@ -49,9 +40,12 @@ App({
         },
         dataType: 'json',
         success: function (res) {
-          wx.setStorageSync("session_3rd", res.data.data);
-          _this.globalData.session_3rd = res.data.data;
+          console.log(res.data);
+          wx.setStorageSync("session_3rd", res.data.data.session_3rd);
+          _this.globalData.session_3rd = res.data.data.session_3rd;
+          _this.globalData.isRegister = res.data.data.isRegister;
           _this.globalData.encryptedData = null;
+          _this.globalData.iv = null;
         },
         fail: function (res) {
           console.log(res);
@@ -99,6 +93,7 @@ App({
     encryptedData:null,
     intervalId:null,
     iv:null,
+    isRegister:false
   },
   
 })

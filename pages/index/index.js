@@ -9,7 +9,7 @@ Page({
    */
   data: {
     userInfo: {},
-    isRegister:false,
+    isRegister: app.globalData.isRegister,
   },
   checkinCustomer: function(){
     wx.navigateTo({
@@ -27,13 +27,13 @@ Page({
    */
   onLoad: function (options) {
     // wx.navigateTo({
-    //   url: '/pages/checkin/checkin',
+    //   url: '/pages/register/register',
     // })
-    // app.globalData.session_3rd = wx.getStorageSync("session_3rd");
-    // if (!app.globalData.session_3rd){
+    app.globalData.session_3rd = wx.getStorageSync("session_3rd");
+    if (!app.globalData.session_3rd){
       
       app.checkLoginInfo();
-    // }
+    }
   },
   
   /**
