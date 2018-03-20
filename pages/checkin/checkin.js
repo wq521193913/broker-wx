@@ -52,7 +52,7 @@ Page({
       fail: function(res){
         console.log(res);
       }
-    })
+    });
   },
   //取消
   checkinCancel: function(){

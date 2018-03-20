@@ -1,6 +1,5 @@
 //app.js
 App({
-
   serverUrl: 'http://127.0.0.1:8762',
   wxLogin: function (cb) {
     wx.login({
@@ -42,6 +41,7 @@ App({
         success: function (res) {
           console.log(res.data);
           wx.setStorageSync("session_3rd", res.data.data.session_3rd);
+          wx.setStorageSync("isRegister", res.data.data.isRegister);
           _this.globalData.session_3rd = res.data.data.session_3rd;
           _this.globalData.isRegister = res.data.data.isRegister;
           _this.globalData.encryptedData = null;

@@ -9,7 +9,7 @@ Page({
    */
   data: {
     userInfo: {},
-    isRegister: app.globalData.isRegister,
+    isRegister: false,
   },
   checkinCustomer: function(){
     wx.navigateTo({
@@ -29,25 +29,32 @@ Page({
     // wx.navigateTo({
     //   url: '/pages/register/register',
     // })
+   
     app.globalData.session_3rd = wx.getStorageSync("session_3rd");
+    app.globalData.isRegister = wx.getStorageSync("isRegister");
+    
     if (!app.globalData.session_3rd){
       
       app.checkLoginInfo();
     }
+    
   },
   
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    console.log(1)
+    console.log(app.globalData.isRegister)
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    console.log(2)
+    console.log(app.globalData.isRegister)
+    this.isRegister = app.globalData.isRegister;
   },
 
   /**
