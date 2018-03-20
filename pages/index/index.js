@@ -9,7 +9,7 @@ Page({
    */
   data: {
     userInfo: {},
-    isRegister:false,
+    isRegister:true,
   },
   checkIdCustomer: function(){
     wx.navigateTo({

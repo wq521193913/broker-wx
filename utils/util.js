@@ -21,9 +21,29 @@ const checkPhone = phone => {
   return false;
 }
 
+const wxRequest = options => {
+    options = options || {};
+    options.url = options.url || '';
+    options.method = options.method || 'GET';
+    options.data = options.data || '';
+    options.header = {"session_3rd":wx.getStorageSync("session_3rd")};
+    options.success = options.success || function () {};
+    options.fails = options.fail || function (res){console.log(res)};
+
+    wx.request({
+      url: options.url,
+      method: options.method,
+      data: options.method,
+      header: options.header,
+      success: options.success,
+      fail: options.fail
+    });
+}
+
 module.exports = {
   formatTime: formatTime,
-  checkPhone: checkPhone
+  checkPhone: checkPhone,
+  wxRequest: wxRequest
 }
 
 
