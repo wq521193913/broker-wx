@@ -5,7 +5,8 @@
     "pages/home/home",
     "pages/user/user",
     "pages/logs/logs",
-    "pages/checkin/checkin"
+    "pages/checkin/checkin",
+    "pages/register/register"
   ],
   "window": {
     "backgroundTextStyle": "light",

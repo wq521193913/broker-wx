@@ -1,41 +1,20 @@
-// pages/home/home.js
-
-const app = getApp()
-
+// pages/register/register.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {},
-    isRegister:false,
-  },
-  checkinCustomer: function(){
-    wx.navigateTo({
-      url:"/pages/checkin/checkin"
-    });
-  },
-  brokerRegister:function(){
-    wx.navigateTo({
-      url: "/pages/register/register"
-    });
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.navigateTo({
-    //   url: '/pages/checkin/checkin',
-    // })
-    // app.globalData.session_3rd = wx.getStorageSync("session_3rd");
-    // if (!app.globalData.session_3rd){
-      
-      app.checkLoginInfo();
-    // }
-  },
   
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

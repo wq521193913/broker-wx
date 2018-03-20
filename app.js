@@ -7,29 +7,36 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         this.globalData.code = res.code;
+        wx.getUserInfo({
+          data: {
+            withCredentials: true
+          },
+          success: res => {
+            wx.setStorageSync("userInfo", res.userInfo)
+            this.globalData.userInfo = res.userInfo;
+            this.globalData.encryptedData = res.encryptedData;
+            this.globalData.iv = res.iv;
+            console.log(res);
+          }
+        });
       }
     });
   },
-  wxUserInfo: function(cb){
-    this.globalData.userInfo = wx.getStorageSync("userInfo");
-    if (!this.globalData.userInfo){
-      console.log(this.globalData.userInfo)
-      wx.getUserInfo({
-        success: res => {
-          wx.setStorageSync("userInfo", res.userInfo)
-          this.globalData.userInfo = res.userInfo;
-          this.globalData.encryptedData = res.encryptedData;
-        }
-      });
-    }
+  // wxUserInfo: function(cb){
+  //   this.globalData.userInfo = wx.getStorageSync("userInfo");
+  //   if (!this.globalData.userInfo){
+      
+  //   }
+  //   console.log(this.globalData.userInfo);
     
-  },
+  // },
   userLogin: function (cb) {
     const _this = this;
     if (this.globalData.code && this.globalData.userInfo) {
       wx.request({
         url: this.serverUrl + "/static/wxLogin",
         method: 'POST',
+        header: { 'content-type':'application/x-www-form-urlencoded'},
         data: {
           code: _this.globalData.code,
           wxNickName: _this.globalData.userInfo.nickName,
@@ -37,12 +44,14 @@ App({
           wxProvince: _this.globalData.userInfo.province,
           wxCountry: _this.globalData.userInfo.country,
           wxAvatarUrl: _this.globalData.userInfo.avatarUrl,
-          encryptedData: _this.globalData.encryptedData
+          encryptedData: _this.globalData.encryptedData,
+          iv: _this.globalData.iv
         },
         dataType: 'json',
         success: function (res) {
           wx.setStorageSync("session_3rd", res.data.data);
           _this.globalData.session_3rd = res.data.data;
+          _this.globalData.encryptedData = null;
         },
         fail: function (res) {
           console.log(res);
@@ -60,12 +69,12 @@ App({
     if (!this.globalData.code) {
       this.wxLogin();
     }
-    if (!this.globalData.userInfo){
-      this.wxUserInfo();
-    }
+    // if (!this.globalData.userInfo){
+    //   this.wxUserInfo();
+    // }
 
     if (!this.globalData.code || !this.globalData.userInfo){
-      this.globalIntervalId = setInterval(this.userLogin(), 5);
+      this.globalData.intervalId = setInterval(this.userLogin, 5);
       return;
     }else{
       this.userLogin();
@@ -88,8 +97,8 @@ App({
     code: null,
     session_3rd:null,
     encryptedData:null,
-    intervalId:null
-
+    intervalId:null,
+    iv:null,
   },
   
 })
