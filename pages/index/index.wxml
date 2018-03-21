@@ -3,8 +3,8 @@
 <view class='container'>
   <image src='/image/20180314164849.png' class="userinfo-avatar" background-size="cover"></image>
   <view class='btn-chunk'>
-  <view class='btn ci-btn' bindtap='checkinCustomer'>登记客户</view>
-      <view class='btn inv-btn'>邀请好友</view>
+    <view class='btn ci-btn' bindtap='checkinCustomer'>登记客户</view>
+      <button class='btn inv-btn' open-type='share'>邀请好友</button> 
     <!-- <block wx:if="{{isRegister}}">
       <view class='btn ci-btn' bindtap='checkinCustomer'>登记客户</view>
       <view class='btn inv-btn'>邀请好友</view>
@@ -18,17 +18,17 @@
     <view>
       <text style='width:100%;left:5px;position:absolute;'>案例展示</text>
     </view>
-    <scroll-view scroll-x class='scroll-view_H'  style='margin-top:20px;margin-left:10px;width:100%;white-space:nowrap;'>
-       <view id="a1" class='scroll-view-item_H'>
-      <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
+    <scroll-view scroll-x class='scroll-view_H'>
+      <view id="a1" class='scroll-view-item_H' bindtap='exhibitionShow'>
+        <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
       </view>
       <view id="a2" class='scroll-view-item_H'>
-      <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
+        <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
       </view>
       <view id="a3" class='scroll-view-item_H'>
-      <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
+        <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
       </view> 
-    <view id="a4" class='scroll-view-item_H'>
+      <view id="a4" class='scroll-view-item_H'>
       <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
       </view> 
       <view id="a5" class='scroll-view-item_H'>

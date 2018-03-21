@@ -11,6 +11,9 @@ Page({
     userInfo: {},
     isRegister: false,
   },
+  inviteFriend: function(){
+    page.onShareAppMessage();
+  },
   checkinCustomer: function(){
     wx.navigateTo({
       url:"/pages/checkin/checkin"
@@ -21,22 +24,30 @@ Page({
       url: "/pages/register/register"
     });
   },
+  exhibitionShow:function(id){
+    wx.navigateTo({
+      url: '/pages/exhibition/exhibition?id='+id,
+    });
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.navigateTo({
-    //   url: '/pages/register/register',
-    // })
-   
-    app.globalData.session_3rd = wx.getStorageSync("session_3rd");
-    app.globalData.isRegister = wx.getStorageSync("isRegister");
+    wx.navigateTo({
+      url: '/pages/wallet/wallet',
+    })
     
-    if (!app.globalData.session_3rd){
+    // wx.showShareMenu({
+    //   withShareTicket: true
+    // })
+    // app.globalData.session_3rd = wx.getStorageSync("session_3rd");
+    // app.globalData.isRegister = wx.getStorageSync("isRegister");
+    
+    // if (!app.globalData.session_3rd){
       
-      app.checkLoginInfo();
-    }
+    //   app.checkLoginInfo();
+    // }
     
   },
   
@@ -44,17 +55,12 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log(1)
-    console.log(app.globalData.isRegister)
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(2)
-    console.log(app.globalData.isRegister)
-    this.isRegister = app.globalData.isRegister;
   },
 
   /**
@@ -88,7 +94,21 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function (res) {
+    
+    console.log(res.from);
+    return {
+      title: '赚外快,就是这么简单',
+      path: '/image/index/index',
+      imageUrl: '/image/20180314164849.png',
+      success: function (res) {
+        // 转发成功
+        console.log(res);
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log(res);
+      }
+    }
   }
 })

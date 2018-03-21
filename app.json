@@ -6,7 +6,12 @@
     "pages/user/user",
     "pages/logs/logs",
     "pages/checkin/checkin",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/exhibition/exhibition",
+    "pages/designer/designer",
+    "pages/wallet/wallet",
+    "pages/earnings/earnings",
+    "pages/wallet-detail/wallet-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

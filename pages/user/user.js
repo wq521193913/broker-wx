@@ -14,7 +14,6 @@ Page({
       avatarUrl: '/image/user_icon.png',
       nickName: '昵称'
     },
-    baseUrl: app.globalData.baseUrl,
     showRight: false
   },
 
@@ -22,11 +21,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.login({
-      success:function(res){
-        console.log(res);
-      }
-    })
+    if(app.globalData.userInfo){
+      this.setData({
+        avatarUrl: app.globalData.userInfo.avatarUrl,
+        nickName: app.globalData.userInfo.nickName
+      })
+    }else{
+      app.checkLoginInfo();
+    }
   }
 
 })
