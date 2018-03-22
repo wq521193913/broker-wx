@@ -23,7 +23,7 @@ const checkPhone = phone => {
 }
 
 const wxRequest = options => {
-  console.log(options);
+  
     options = options || {};
     options.url = options.url || '';
     options.method = options.method || 'GET';
