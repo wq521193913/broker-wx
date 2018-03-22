@@ -1,35 +1,18 @@
-// pages/earnings/earnings.js
-
-const util = require('../../utils/util.js');
-const app = getApp();
+// pages/withdrawal/withdrawal.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    earningList:[
-      {earningSource: '客户小明,已签装修合同.获得待收佣金', earningAmount:'5000.00'},
-      {earningSource: '邀请好友成功.获得待收奖励', earningAmount: '100.00' }
-
-    ]
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var _this = this;
-    util.wxRequest({
-      url: app.serverUrl + '/brokerEarning/getEarningsPageList',
-      dataType: 'json',
-      success: function(res){
-        console.log(res);
-        _this.setData({
-          earningList: res.data.data
-        })
-      }
-    })
+  
   },
 
   /**

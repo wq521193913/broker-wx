@@ -11,7 +11,8 @@
     "pages/designer/designer",
     "pages/wallet/wallet",
     "pages/earnings/earnings",
-    "pages/wallet-detail/wallet-detail"
+    "pages/wallet-detail/wallet-detail",
+    "pages/withdrawal/withdrawal"
   ],
   "window": {
     "backgroundTextStyle": "light",

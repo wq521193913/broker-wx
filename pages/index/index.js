@@ -38,16 +38,9 @@ Page({
       url: '/pages/wallet/wallet',
     })
     
-    // wx.showShareMenu({
-    //   withShareTicket: true
-    // })
-    // app.globalData.session_3rd = wx.getStorageSync("session_3rd");
-    // app.globalData.isRegister = wx.getStorageSync("isRegister");
-    
-    // if (!app.globalData.session_3rd){
-      
-    //   app.checkLoginInfo();
-    // }
+    wx.showShareMenu({
+      withShareTicket: true
+    })
     
   },
   

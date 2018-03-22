@@ -1,2 +1,8 @@
-<!--pages/earnings/earnings.wxml-->
-<text>pages/earnings/earnings.wxml</text>
+<!-- 待收益 -->
+<view class='earnings-chunk'>
+ 
+  <view class='earnings-item' wx:for="{{earningList}}">
+    <text>{{item.earningSource}} {{item.earningAmount}}元</text>
+  </view>
+
+</view>

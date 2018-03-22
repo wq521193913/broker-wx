@@ -16,6 +16,7 @@ App({
             this.globalData.userInfo = res.userInfo;
             this.globalData.encryptedData = res.encryptedData;
             this.globalData.iv = res.iv;
+            this.userLogin();
           }
         });
       }
