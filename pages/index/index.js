@@ -11,9 +11,6 @@ Page({
     userInfo: {},
     isRegister: false,
   },
-  inviteFriend: function(){
-    page.onShareAppMessage();
-  },
   checkinCustomer: function(){
     wx.navigateTo({
       url:"/pages/checkin/checkin"
@@ -34,9 +31,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.navigateTo({
-      url: '/pages/wallet/wallet',
-    })
+    // wx.navigateTo({
+    //   url: '/pages/wallet/wallet',
+    // })
     
     wx.showShareMenu({
       withShareTicket: true
@@ -89,19 +86,35 @@ Page({
    */
   onShareAppMessage: function (res) {
     
-    console.log(res.from);
-    return {
-      title: '赚外快,就是这么简单',
-      path: '/image/index/index',
-      imageUrl: '/image/20180314164849.png',
-      success: function (res) {
-        // 转发成功
-        console.log(res);
-      },
-      fail: function (res) {
-        // 转发失败
-        console.log(res);
+    if(res.from == 'button'){
+      return {
+        title: '赚外快,就是这么简单',
+        path: '/pages/register/register?invite=',
+        imageUrl: '/image/20180314164849.png',
+        success: function (res) {
+          // 转发成功
+          console.log(res);
+        },
+        fail: function (res) {
+          // 转发失败
+          console.log(res);
+        }
+      }
+    }else{
+      return {
+        title: '家装,您的首选',
+        path: '/pages/index/index',
+        imageUrl: '/image/20180314164849.png',
+        success: function (res) {
+          // 转发成功
+          console.log(res);
+        },
+        fail: function (res) {
+          // 转发失败
+          console.log(res);
+        }
       }
     }
+    
   }
 })
