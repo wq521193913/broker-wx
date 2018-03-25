@@ -10,6 +10,7 @@ Page({
   data: {
     userInfo: {},
     isRegister: false,
+    inviteCode: 'test',
   },
   checkinCustomer: function(){
     wx.navigateTo({
@@ -34,7 +35,11 @@ Page({
     // wx.navigateTo({
     //   url: '/pages/wallet/wallet',
     // })
-    
+    if (options.inviteCode){
+      this.setData({
+        inviteCode: options.inviteCode,
+      })
+    }
     wx.showShareMenu({
       withShareTicket: true
     })
@@ -89,7 +94,7 @@ Page({
     if(res.from == 'button'){
       return {
         title: '赚外快,就是这么简单',
-        path: '/pages/register/register?invite=',
+        path: '/pages/register/register?inviteCode=',
         imageUrl: '/image/20180314164849.png',
         success: function (res) {
           // 转发成功

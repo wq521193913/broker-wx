@@ -21,14 +21,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(app.globalData.userInfo){
-      this.setData({
+    console.log(app.globalData.userInfo)
+    this.setData({
+      userInfo:{
         avatarUrl: app.globalData.userInfo.avatarUrl,
         nickName: app.globalData.userInfo.nickName
-      })
-    }else{
-      app.checkLoginInfo();
-    }
+      }
+      
+    })
+    
   }
 
 })
