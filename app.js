@@ -68,13 +68,6 @@ App({
     // if (!this.globalData.userInfo){
     //   this.wxUserInfo();
     // }
-
-    if (!this.globalData.code || !this.globalData.userInfo){
-      this.globalData.intervalId = setInterval(this.userLogin, 5);
-      return;
-    }else{
-      this.userLogin();
-    }
     
   },
   onLaunch: function () {

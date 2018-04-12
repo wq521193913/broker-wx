@@ -12,6 +12,11 @@ Page({
     isRegister: false,
     inviteCode: 'test',
   },
+  caseShowPage: function(){
+    wx.navigateTo({
+      url: "/pages/case/case"
+    });
+  },
   checkinCustomer: function(){
     wx.navigateTo({
       url:"/pages/checkin/checkin"

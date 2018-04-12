@@ -20,26 +20,7 @@
     <view>
       <text style='width:100%;left:5px;position:absolute;'>案例展示</text>
     </view>
-    <scroll-view scroll-x class='scroll-view_H'>
-      <view id="a1" class='scroll-view-item_H' bindtap='exhibitionShow'>
-        <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
-      </view>
-      <view id="a2" class='scroll-view-item_H'>
-        <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
-      </view>
-      <view id="a3" class='scroll-view-item_H'>
-        <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
-      </view> 
-      <view id="a4" class='scroll-view-item_H'>
-      <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
-      </view> 
-      <view id="a5" class='scroll-view-item_H'>
-      <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
-      </view> 
-      <view id="a6" class='scroll-view-item_H'>
-      <image src='/image/20180314164916.png' class='exhibition-item' background-size="cover"></image>
-      </view> 
-    </scroll-view>
+      <button style='border-radiu:45%' bindtap='caseShowPage'>案例展示</button>
     </view>
 
     <view class='designer-chunk'>
