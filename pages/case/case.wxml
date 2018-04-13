@@ -1,4 +1,12 @@
 <view class='case-view'>
+  <scroll-view scroll-y>
+    <block wx:for="{{caseImgs}}">
 
+      <view class='case-item' style='display:inline-block;min-width:50%;width:50%;text-align:center;'>
+        <image src='{{item.caseImg}}' style='min-width:80%;width:80%;height:100px;margin:0 auto;'></image>
+        <span style='display:block'>{{item.caseTitle}}</span>
+      </view>
 
+    </block>
+  </scroll-view>
 </view>

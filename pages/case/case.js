@@ -9,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    caseImgs:[],
+    page:1
   },
 
   /**
@@ -17,8 +18,6 @@ Page({
    */
   onLoad: function (options) {
     app.checkLoginInfo();
-
-
   },
 
   /**
@@ -33,17 +32,40 @@ Page({
    * 获取案例展示列表
    */
   caseShowList: function(){
+    var _this = this;
     util.wxRequest({
       url: app.serverUrl + '/caseShow/caseShowPageList',
-      data: {"page":1,"rows":10},
+      data: {"page":_this.data.page,"rows":10},
       success: function(res){
         var data = res.data;
         var caseShowData = data.data;
-        console.log(caseShowData)
+        console.log(caseShowData);
+        _this.setData({
+          caseImgs:caseShowData.rows
+        })
+        
+        
       }
     })
   },
 
+  /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+  onPullDownRefresh: function () {
+    var _this = this;
+    _this.setData({
+      page:1
+    })
+    _this.caseShowList();
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    console.log("onReachBottom");
+  },
   /**
    * 用户点击右上角分享
    */
