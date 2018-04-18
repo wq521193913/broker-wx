@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    caseShows:[]
   },
 
   /**
@@ -33,14 +33,25 @@ Page({
    * 获取案例展示列表
    */
   caseShowList: function(){
+    var _this = this;
     util.wxRequest({
       url: app.serverUrl + '/caseShow/caseShowPageList',
       data: {"page":1,"rows":10},
       success: function(res){
         var data = res.data;
         var caseShowData = data.data;
+        _this.setData({
+          caseShows: caseShowData.rows
+        })
+        
         console.log(caseShowData)
       }
+    })
+  },
+  //效果图
+  showExhibition: function(){
+    wx.navigateTo({
+      url: '/pages/exhibition/exhibition',
     })
   },
 
