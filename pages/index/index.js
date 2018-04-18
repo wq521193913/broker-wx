@@ -38,7 +38,7 @@ Page({
    */
   onLoad: function (options) {
     // wx.navigateTo({
-    //   url: '/pages/wallet/wallet',
+    //   url: '/pages/case/case',
     // })
     if (options.inviteCode){
       this.setData({
